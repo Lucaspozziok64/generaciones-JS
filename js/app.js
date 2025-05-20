@@ -12,7 +12,7 @@ class Persona {
 
     mostrarGeneracion() {
         if (this.anioNacimiento >= 1930 && this.anioNacimiento <= 1948) {
-            return ("Perteneces a la generación Silent Generation. Tu rasgo característico es la Austeridad😐");
+            return ("<p>Perteneces a la generación Silent Generation. Tu rasgo característico es la Austeridad😐</p>");
         } else if (this.anioNacimiento >= 1949 && this.anioNacimiento <= 1968) {
             return ("Perteneces a la generación Baby Boom. Tu rasgo característico es la Ambición🤑");
         } else if (this.anioNacimiento >= 1969 && this.anioNacimiento <= 1980) {
@@ -36,16 +36,49 @@ class Persona {
     }
 
     mostrarDatos() {
-        console.log(`<p>Tu nombre es: ${this.nombre}`);
-        console.log(`<p>Tu edad es: ${this.edad} </p>`);
-        console.log(`<p>Tu dni es: ${this.dni}</p>`);
-        console.log(`<p>Tu sexo es: ${this.sexo}</p>`);
-        console.log(`<p>Tu peso es: ${this.peso}</p>`);
-        console.log(`<p>Tu altura es: ${this.altura}</p>`);
-        console.log(`<p>Tu año de nacimiento es: ${this.anioNacimiento}`);
-        console.log(`<p>Tu generación es: ${this.mostrarGeneracion()}</p>`);
+        return `
+            <li class="list-group-item"><strong>Nombre:</strong> ${this.nombre}</li>
+            <li class="list-group-item"><strong>Edad:</strong> ${this.edad}</li>
+            <li class="list-group-item"><strong>DNI:</strong> ${this.dni}</li>
+            <li class="list-group-item"><strong>Sexo:</strong> ${this.sexo}</li>
+            <li class="list-group-item"><strong>Peso:</strong> ${this.peso} kg</li>
+            <li class="list-group-item"><strong>Altura:</strong> ${this.altura} cm</li>
+            <li class="list-group-item"><strong>Año de nacimiento:</strong> ${this.anioNacimiento}</li>
+        `;
     }
 }
 
-const persona1 = new Persona('Lucas', '23', 'Masculino', '43566719', '85', '176', '2001');
-persona1.mostrarDatos();
+let persona;
+
+const crearPersona = (e) => {
+    e.preventDefault();
+
+    const nombre = document.getElementById('nombre').value;
+    const edad = document.getElementById('edad').value;
+    const sexo = document.getElementById('sexo').value;
+    const dni = document.getElementById('dni').value;
+    const peso = document.getElementById('peso').value;
+    const altura = document.getElementById('altura').value;
+    const anioNacimiento = document.getElementById('anioNacimiento').value;
+
+    const spanNombre = document.getElementById('nombreResultado');
+    spanNombre.textContent = nombre;
+
+    persona = new Persona(nombre, edad, sexo, dni, peso, altura, anioNacimiento);
+
+    document.getElementById('contenedorOpciones').style.display = 'block';
+    formulario.reset();
+}
+
+const mostrarDatos = () => {
+    document.getElementById('resultado').innerHTML = `<li class="list-group-item">${persona.mostrarDatos()}</li>`;
+}
+
+const mostrarGeneracion = () => {
+    document.getElementById('resultado').innerHTML = `<li class="list-group-item">${persona.mostrarGeneracion()}</li>`;
+}
+
+const formulario = document.getElementById('miFormulario')
+formulario.addEventListener('submit', crearPersona);
+const capturaDatos = document.getElementById('miFormulario')
+mostrarDatos.addEventListener('click', mostrarDatos);
