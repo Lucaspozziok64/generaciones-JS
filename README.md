@@ -9,6 +9,14 @@
 - 🎯 Determinación de generación (Baby Boomer, Millennial, Gen Z, etc.)
 - 🖥️ Interfaz intuitiva y responsive
 
+🚀Como probar el proyecto
+-
+- 1- Clona el repositorio:
+````
+https://github.com/Lucaspozziok64/generaciones-JS.git
+````
+- 2- Abre el archivo index en tu navegador
+
 📂 Estructura del proyecto
 - 
 ````
