@@ -13,7 +13,7 @@
 -
 - 1- Clona el repositorio:
 ````
-https://github.com/Lucaspozziok64/generaciones-JS.git
+git clone https://github.com/Lucaspozziok64/generaciones-JS.git
 ````
 - 2- Abre el archivo index en tu navegador
 
